@@ -40,10 +40,3 @@ theme = 'blowfish'
   ShowReadingTime = true
   ShowPostNavLinks = true
 ```
-
-Example:
-Pages → [https://wilonweb.github.io/test-template/](https://wilonweb.github.io/test-template/)
-Code → [https://github.com/wilonweb/test-template](https://github.com/wilonweb/test-template)
-
----
-
