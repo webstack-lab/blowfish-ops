@@ -1,7 +1,3 @@
-Voici **la version anglaise**, propre, claire et prête à mettre dans ton `README.md` :
-
----
-
 # 🚀 GSS Pipeline: Hugo + Blowfish + GitHub Pages
 
 This repository is a **ready-to-use template** for creating a static site using [Hugo](https://gohugo.io/) and the [Blowfish](https://blowfish.page/) theme, automatically deployed via **GitHub Pages**.
