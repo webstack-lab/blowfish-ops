@@ -22,9 +22,7 @@ They are intended to simplify workflows for **multi-language**, **multi-author**
 - Hugo **Extended** installed (`hugo version`)  
 - A Hugo project initialized with Blowfish  
 - Scripts must be executable if needed:
-  ```bash
-  chmod +x scripts/*.sh
-```
+  `chmod +x scripts/*.sh`
 
 ## Basic Usage
 
