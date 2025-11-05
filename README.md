@@ -1,37 +1,42 @@
-# 🚀 Pipline GSS : Hugo + Blowfish + GitHub Pages
-
-Ce dépôt est un **template prêt à l’emploi** pour créer un site statique avec [Hugo](https://gohugo.io/) et le thème [Blowfish](https://blowfish.page/), automatiquement déployé sur **GitHub Pages**.
+Voici **la version anglaise**, propre, claire et prête à mettre dans ton `README.md` :
 
 ---
 
-## 🧪 Étapes pour créer un nouveau blog
+# 🚀 GSS Pipeline: Hugo + Blowfish + GitHub Pages
 
-### 1. 📄 Créer un nouveau repo avec ce template
-
-- Clique sur le bouton **"Use this template"** (en haut à droite sur GitHub)
-- Choisis un **nom de repo** (ex : `mon-blog`)
-- Assure-toi qu’il est **public**
-- Valide
+This repository is a **ready-to-use template** for creating a static site using [Hugo](https://gohugo.io/) and the [Blowfish](https://blowfish.page/) theme, automatically deployed via **GitHub Pages**.
 
 ---
 
-### 2. ⚙️ Activer Action > GitHub Pages
+## 🧪 Steps to Create a New Blog
 
-- Va dans `Settings` → `Pages`
-- Dans **Build and Deployment**, choisis :
-  - Source : `GitHub Actions`
-- C’est tout. GitHub Pages va attendre le workflow.
+### 1. 📄 Create a New Repository Using This Template
+
+* Click the **“Use this template”** button (top-right on GitHub)
+* Choose a **repository name** (example: `my-blog`)
+* Make sure it is **public**
+* Confirm
 
 ---
 
-### 3. 🛠️ Modifier `hugo.toml`
+### 2. ⚙️ Enable GitHub Pages (via Actions)
 
-Avant de déployer en local, édite le fichier `hugo.toml` :
+* Go to `Settings` → `Pages`
+* Under **Build and Deployment**, select:
+
+  * Source: **GitHub Actions**
+* That’s it — GitHub Pages will wait for the workflow to build your site.
+
+---
+
+### 3. 🛠️ Edit `hugo.toml`
+
+Before running or deploying locally, update your `hugo.toml`:
 
 ```toml
-baseURL = 'https://<ton-user>.github.io/<nouveau-repo>/'
-languageCode = 'fr-fr'
-title = 'Mon blog'
+baseURL = 'https://<your-user>.github.io/<your-repo>/'
+languageCode = 'en-us'
+title = 'My Blog'
 theme = 'blowfish'
 
 [params]
@@ -40,9 +45,9 @@ theme = 'blowfish'
   ShowPostNavLinks = true
 ```
 
-exemple 
-pages : https://wilonweb.github.io/test-template/
-code : https://github.com/wilonweb/test-template
+Example:
+Pages → [https://wilonweb.github.io/test-template/](https://wilonweb.github.io/test-template/)
+Code → [https://github.com/wilonweb/test-template](https://github.com/wilonweb/test-template)
 
-## TODO 
-Deployer test-template en local
+---
+
