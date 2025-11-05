@@ -24,9 +24,7 @@ They are intended to simplify workflows for **multi-language**, **multi-author**
 - Scripts must be executable if needed:
   ```bash
   chmod +x scripts/*.sh
-````
-
----
+```
 
 ## Basic Usage
 
