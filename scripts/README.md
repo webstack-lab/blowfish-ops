@@ -63,5 +63,3 @@ They are intended to simplify workflows for **multi-language**, **multi-author**
 ---
 
 Feel free to suggest improvements or open a Pull Request.
-
-```
