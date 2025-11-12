@@ -1,6 +1,7 @@
 # 🚀 GSS Pipeline: Hugo + Blowfish + GitHub Pages
 
 This repository is a **ready-to-use template** for creating a static site using [Hugo](https://gohugo.io/) and the [Blowfish](https://blowfish.page/) theme, automatically deployed via **GitHub Pages**.
+[![Use this template](https://img.shields.io/badge/Use_this_template-2ea44f?style=for-the-badge&logo=github)](https://github.com/webstack-lab/blowfish-ops/generate)
 
 ---
 
