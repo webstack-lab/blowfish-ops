@@ -1,59 +1,57 @@
 #!/bin/bash
 
-echo "🖼️ Configuration d'une image d’accueil pour le site Hugo (auto-détection de la racine + injection dans hero)"
+# ==========================================================
+# set-home-image.sh
+# Ajoute une image de hero compatible Blowfish (assets/img)
+# ==========================================================
 
-# 1. Demander le chemin de l’image source
-read -p "Chemin de l'image locale (ex: /c/Users/wilon/Pictures/avatar.png) : " image_path
+echo "🖼️ Configuration de l’image Hero du site"
 
-# 2. Vérification que le fichier existe
-while [ ! -f "$image_path" ]; do
-  echo "❌ Fichier introuvable à $image_path"
-  read -p "➡️ Réessaie avec un chemin commençant par /c/ : " image_path
-done
+# 1. Demande du chemin source
+read -p "Chemin complet de l'image locale : " image_path
 
-# 3. Détection automatique de la racine Hugo
-project_root="$(git rev-parse --show-toplevel 2>/dev/null || realpath "$(pwd)/..")"
-
-if [ ! -f "$project_root/hugo.toml" ] && [ ! -f "$project_root/config.toml" ] && [ ! -d "$project_root/config" ]; then
-  echo "⚠️ Projet Hugo non détecté automatiquement."
-  read -p "➡️ Chemin du dossier racine Hugo (ex: ../..) : " manual_path
-  project_root=$(realpath "$manual_path")
-  if [ ! -f "$project_root/hugo.toml" ] && [ ! -f "$project_root/config.toml" ] && [ ! -d "$project_root/config" ]; then
-    echo "❌ Dossier invalide : $project_root"
-    exit 1
-  fi
+if [ ! -f "$image_path" ]; then
+  echo "❌ Fichier introuvable : $image_path"
+  exit 1
 fi
 
-echo "📁 Projet Hugo détecté à : $project_root"
+# 2. Détection de la racine du projet
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(dirname "$(dirname "$SCRIPT_DIR")")"
 
-# 4. Copier l’image dans le bon static/
+CONFIG_FILE="$PROJECT_ROOT/hugo.toml"
+ASSETS_DIR="$PROJECT_ROOT/assets/img"
+CONTENT_INDEX="$PROJECT_ROOT/content/_index.md"
+
+# 3. Création dossier assets/img
+mkdir -p "$ASSETS_DIR"
+
+# 4. Copie image
 image_name=$(basename "$image_path")
-target_path="$project_root/static/$image_name"
+cp "$image_path" "$ASSETS_DIR/$image_name"
 
-mkdir -p "$project_root/static"
-cp "$image_path" "$target_path" && echo "✅ Image copiée dans $target_path"
+echo "✅ Image copiée dans : $ASSETS_DIR/$image_name"
 
-# 5. Modifier content/_index.md pour afficher l’image en hero
-index_file="$project_root/content/_index.md"
-mkdir -p "$(dirname "$index_file")"
-
-# Créer fichier s’il n’existe pas
-if [ ! -f "$index_file" ]; then
-  echo -e "---\ntitle: \"Accueil\"\n---" > "$index_file"
+# 5. Mise à jour de content/_index.md
+if [ ! -f "$CONTENT_INDEX" ]; then
+  echo "---" > "$CONTENT_INDEX"
+  echo "title: \"Accueil\"" >> "$CONTENT_INDEX"
+  echo "---" >> "$CONTENT_INDEX"
 fi
 
-# Supprimer ancien bloc hero
-sed -i '/^hero:/,/^[^ ]/d' "$index_file"
+# 🔥 Supprime bloc hero existant
+sed -i '/^hero:/,/^[^ ]/d' "$CONTENT_INDEX"
 
-# Ajouter bloc hero
-cat <<EOF >> "$index_file"
+# 🔥 Ajout du nouveau bloc hero
+cat <<EOF >> "$CONTENT_INDEX"
 
 hero:
   enabled: true
-  image: "/$image_name"
+  image: "img/$image_name"
   align: center
-  headline: "Bienvenue sur mon site"
-  description: "Page d’accueil propulsée par Hugo + Blowfish"
+  headline: "Bienvenue sur le site E-Sport"
+  description: "Powered by Hugo + Blowfish"
 EOF
 
-echo "🎉 Image d’accueil ajoutée dans content/_index.md"
+echo "🎉 Image Hero configurée avec succès"
+echo "🚀 Lance : hugo server -D --disableFastRender"
